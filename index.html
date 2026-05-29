@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2likeus — independent bistro, Castle Road, Bedford</title>
+<meta name="description" content="2likeus, an independent bistro on Castle Road in Bedford. Roberto and Lino keep a small dining room a short walk from the river. Reservations via Facebook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:  #F2EDDE;
+    --paper-2:#EAE2CB;
+    --ink:    #2B2A1B;
+    --olive:  #6C7544;
+    --olive-2:#4F5832;
+    --brass:  #C9B26B;
+    --rule:   rgba(43,42,27,0.18);
+    --rhythm: clamp(0.95rem, 0.55rem + 0.9vw, 1.1rem);
+    --display: "Tenor Sans", "Optima", "Palatino", serif;
+    --body:    "EB Garamond", Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: var(--rhythm);
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(43,42,27,0.06) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+    z-index: 1;
+  }
+
+  h1, h2, h3 { text-wrap: balance; font-weight: 400; }
+  p  { text-wrap: pretty; hyphens: auto; }
+
+  a { color: inherit; text-decoration: none; }
+  a.link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: background-size 0.35s ease;
+  }
+  a.link:hover { background-size: 100% 2px; }
+
+  /* layout shell */
+  .wrap {
+    max-width: 86rem;
+    margin: 0 auto;
+    padding: clamp(1.1rem, 2vw, 2rem) clamp(1.2rem, 3vw, 3rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* MASTHEAD */
+  header.top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .word-mark {
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .word-mark em {
+    font-style: italic;
+    font-family: var(--body);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--olive-2);
+    margin-left: 0.4rem;
+  }
+  nav.top-nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(1.2rem, 2.4vw, 2.4rem);
+    margin: 0; padding: 0;
+    font-family: var(--display);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  nav.top-nav a { display: inline-block; padding: 0.4rem 0; }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: clamp(3rem, 7vw, 7rem) 0 clamp(2.5rem, 5vw, 5rem);
+    align-items: end;
+    position: relative;
+  }
+
+  .logotype {
+    font-family: var(--display);
+    font-size: clamp(5rem, 18vw, 16rem);
+    line-height: 0.82;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    text-transform: lowercase;
+    position: relative;
+  }
+  .logotype .twoglyph {
+    font-family: var(--body);
+    font-style: italic;
+    color: var(--olive-2);
+    font-size: 0.78em;
+    letter-spacing: -0.02em;
+    margin-right: 0.04em;
+  }
+  .logotype .breath {
+    display: block;
+    font-family: var(--body);
+    font-style: italic;
+    font-size: clamp(1rem, 1.4vw, 1.35rem);
+    letter-spacing: 0.02em;
+    color: var(--olive-2);
+    margin-top: clamp(1rem, 1.6vw, 1.4rem);
+    line-height: 1.4;
+    text-transform: none;
+    max-width: 26rem;
+  }
+
+  .hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.4rem, 2.2vw, 2rem);
+    padding-bottom: 0.6rem;
+  }
+  .meta-line {
+    font-family: var(--display);
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--olive-2);
+  }
+  .address {
+    font-family: var(--display);
+    font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+  }
+  .address span { display: block; }
+
+  .quote {
+    border-top: 1px solid var(--rule);
+    padding-top: clamp(1.4rem, 2.2vw, 2rem);
+    margin: 0;
+  }
+  .quote p {
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+    line-height: 1.4;
+    margin: 0 0 0.8rem;
+  }
+  .quote footer {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--olive-2);
+  }
+
+  /* lozenge slow drift */
+  .lozenge {
+    position: absolute;
+    right: clamp(1rem, 4vw, 4rem);
+    top: clamp(1rem, 3vw, 3rem);
+    width: clamp(4rem, 6vw, 6rem);
+    height: clamp(4rem, 6vw, 6rem);
+    border-radius: 999px;
+    background: var(--brass);
+    z-index: -1;
+    filter: blur(0.5px);
+  }
+  @property --grad-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+  @supports (background: conic-gradient(from 0deg, red, blue)) {
+    .lozenge {
+      background: conic-gradient(from var(--grad-angle), var(--brass), var(--olive), var(--brass));
+      animation: spin 18s linear infinite;
+    }
+    @keyframes spin { to { --grad-angle: 360deg; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lozenge { animation: none; }
+  }
+
+  /* SECTION RULES */
+  .slab {
+    border-top: 1px solid var(--rule);
+    padding: clamp(3rem, 6vw, 6rem) 0;
+    position: relative;
+  }
+  .slab--olive {
+    background: var(--olive);
+    color: var(--paper);
+    margin: 0 calc(-1 * clamp(1.2rem, 3vw, 3rem));
+    padding-left: clamp(1.2rem, 3vw, 3rem);
+    padding-right: clamp(1.2rem, 3vw, 3rem);
+    border-color: rgba(242,237,222,0.18);
+  }
+  .slab--olive .meta-line { color: var(--brass); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: baseline;
+    margin-bottom: clamp(1.5rem, 3vw, 3rem);
+  }
+  .section-head .index {
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .section-head h2 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    letter-spacing: -0.01em;
+    margin: 0;
+    line-height: 1.05;
+  }
+
+  /* ABOUT prose */
+  .prose {
+    max-width: 36rem;
+    font-size: clamp(1.05rem, 0.65rem + 0.7vw, 1.25rem);
+    line-height: 1.6;
+    margin-left: clamp(0rem, 10vw, 10rem);
+  }
+  .prose p + p { margin-top: 1.1em; }
+  .prose em { color: var(--olive-2); }
+  .slab--olive .prose em { color: var(--brass); }
+
+  /* PRACTICAL panel */
+  .practical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+  .field {
+    border-top: 1px solid currentColor;
+    padding-top: 1.1rem;
+    opacity: 0.95;
+  }
+  .field .label {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 0.6rem;
+  }
+  .field .val {
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+  .field .val em {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 0.8em;
+    letter-spacing: 0;
+    opacity: 0.85;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  /* FOOTER */
+  footer.foot {
+    border-top: 1px solid var(--rule);
+    margin-top: clamp(3rem, 5vw, 5rem);
+    padding: clamp(2rem, 4vw, 4rem) 0 clamp(2rem, 3vw, 3rem);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: end;
+  }
+  .foot .letterhead {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    text-transform: lowercase;
+  }
+  .foot .letterhead span { display: block; }
+  .foot .colophon {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    opacity: 0.78;
+    max-width: 24rem;
+    justify-self: end;
+    text-align: right;
+  }
+
+  /* scroll-driven reveal */
+  .reveal { opacity: 0; transform: translateY(1.5rem); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.is-in { opacity: 1; transform: translateY(0); }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      opacity: 1; transform: none;
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(1.5rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; animation: none; }
+  }
+
+  /* SMALL SCREENS */
+  @media (max-width: 720px) {
+    header.top { grid-template-columns: 1fr; gap: 0.8rem; }
+    nav.top-nav ul { flex-wrap: wrap; gap: 1rem; }
+    .hero { grid-template-columns: 1fr; padding-top: 2rem; }
+    .practical { grid-template-columns: 1fr; }
+    .foot { grid-template-columns: 1fr; }
+    .foot .colophon { justify-self: start; text-align: left; }
+    .prose { margin-left: 0; }
+    .lozenge { right: 0.6rem; top: 0.6rem; width: 3rem; height: 3rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="top">
+      <div class="word-mark">2likeus <em>· bistro</em></div>
+      <nav class="top-nav" aria-label="Primary">
+        <ul>
+          <li><a class="link" href="#room">The room</a></li>
+          <li><a class="link" href="#find">Find us</a></li>
+          <li><a class="link" href="https://www.facebook.com/2likeusbistro/" rel="noopener" target="_blank">Reservations</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="lozenge" aria-hidden="true"></span>
+
+      <div class="logotype reveal">
+        <span class="twoglyph">2</span>likeus
+        <span class="breath">An independent bistro on Castle Road, a short walk from the river, kept by Roberto &amp; Lino.</span>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="meta-line reveal">Bedford · MK40</div>
+        <div class="address reveal">
+          <span>127a Castle Road</span>
+          <span>Bedford, MK40 3RF</span>
+        </div>
+
+        <blockquote class="quote reveal">
+          <p>&ldquo;Had dinner at 2likeus last night. We had a table for four and we all loved it. Food was great, setting was great and Roberto and Lino both fabulous.&rdquo;</p>
+          <footer>From a recent guest review</footer>
+        </blockquote>
+      </aside>
+    </section>
+
+    <section class="slab" id="room">
+      <div class="section-head reveal">
+        <span class="index">01 / The room</span>
+        <h2>A small dining room, kept by the people who cook in it.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>2likeus sits in a Victorian terrace on Castle Road — the residential ribbon that runs north from the Embankment, away from the High Street noise. The room is modest. The hosts are not.</p>
+        <p>Bookings are taken by message — the easiest route is our <a class="link" href="https://www.facebook.com/2likeusbistro/" rel="noopener" target="_blank">Facebook page</a>, where the kitchen also posts when the menu changes.</p>
+      </div>
+    </section>
+
+    <section class="slab slab--olive">
+      <div class="section-head reveal">
+        <span class="index">02 / Practical</span>
+        <h2>How to find us, how to book.</h2>
+      </div>
+
+      <div class="practical">
+        <div class="field reveal">
+          <div class="label">Address</div>
+          <div class="val">
+            127a Castle Road<br>
+            Bedford <span style="opacity:.7">·</span> MK40 3RF
+            <em>A few minutes on foot from St Paul&rsquo;s Square.</em>
+          </div>
+        </div>
+        <div class="field reveal">
+          <div class="label">Bookings</div>
+          <div class="val">
+            <a class="link" href="https://www.facebook.com/2likeusbistro/" rel="noopener" target="_blank">Message on Facebook</a>
+            <em>Direct phone line not currently listed — we&rsquo;ll add it here once confirmed.</em>
+          </div>
+        </div>
+        <div class="field reveal">
+          <div class="label">Hours</div>
+          <div class="val">
+            Evenings, by reservation
+            <em>Exact hours change with the kitchen. Please confirm when booking.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slab" id="find">
+      <div class="section-head reveal">
+        <span class="index">03 / Getting here</span>
+        <h2>Castle Road, just past the bend.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>Coming from the river, walk up The Embankment, turn left onto Castle Road and keep going. We&rsquo;re on the left — a quiet shopfront, easy to miss if you&rsquo;re not looking. Parking is on-street; the bus stops on St Cuthbert&rsquo;s Street are five minutes away.</p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="letterhead">
+        <span>2likeus</span>
+        <span>127a Castle Road</span>
+        <span>Bedford · MK40 3RF</span>
+      </div>
+      <div class="colophon">
+        <p>An independent bistro. Reservations via Facebook · <a class="link" href="https://www.facebook.com/2likeusbistro/" rel="noopener" target="_blank">/2likeusbistro</a>.</p>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  // Light fallback reveal for browsers without scroll-driven animations.
+  if (!CSS.supports('animation-timeline: view()')) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
